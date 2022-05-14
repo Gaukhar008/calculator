@@ -38,6 +38,11 @@ function operationHandler(nextOperator) {
     const inputValue = parseFloat(displayValue);
     if (firstOperand === null && !isNaN(inputValue)) {
         calculator.firstOperand = inputValue;
+    } else if (operator) {
+        const result = operate(operator, firstOperand, inputValue);
+
+        calculator.displayValue = String(result);
+        calculator.firstOperand = result;
     }
 
     calculator.waitingForSecondOperand = true;
@@ -83,7 +88,7 @@ const operate = function(operator, first, second) {
                 return divide(first, second);
             }
         default:
-            return null;    
+            return second;    
     }
 }
 
