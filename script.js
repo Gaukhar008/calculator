@@ -1,8 +1,3 @@
-const numberButtons = document.querySelectorAll('.numberBtn');
-const allButtons = document.querySelectorAll('button');
-const operationButtons = document.querySelectorAll('.operationBtn');
-
-
 const calculator = {
     displayValue: '0',
     firstOperand: null,
@@ -15,40 +10,14 @@ function updateDisplay() {
     display.value = calculator.displayValue;
 }
 
-const buttons = document.querySelector('.buttons');
-
-buttons.addEventListener('click', (event) => {
-    const {target} = event;
-    if(!target.matches('button')) {
-        return;
-    }
-    if(target.classList.contains('operationBtn')) {
-        console.log('operator', target.value);
-        return;
-    }
-    if(target.classList.contains('decimalBtn')) {
-        console.log('decimal', target.value);
-        return;
-    }
-    if(target.classList.contains('clearBtn')) {
-        console.log('clear', target.value);
-        return;
-    }
-    if(target.classList.contains('deleteBtn')) {
-        console.log('delete', target.value);
-        return;
-    }
-    if(target.classList.contains('bracketBtn')) {
-        console.log('brackets', target.value);
-        return;
-    }
-    if(target.classList.contains('equalBtn')) {
-        console.log('equal-sign', target.value);
-        return;
-    }
-    console.log('digit', target.value);
- })
-
+ function inputDigit(digit) {
+     const {displayValue} = calculator;
+     if(displayValue == 0) {
+         calculator.displayValue = digit;
+     } else {
+         calculator.displayValue += digit;
+     }
+ }
 
 const add = function(first, second) {
     let total = 0;
@@ -91,4 +60,39 @@ const operate = function(operator, first, second) {
             return null;    
     }
 }
+
+const buttons = document.querySelector('.buttons');
+
+buttons.addEventListener('click', (event) => {
+    const {target} = event;
+    if(!target.matches('button')) {
+        return;
+    }
+    if(target.classList.contains('operationBtn')) {
+        console.log('operator', target.value);
+        return;
+    }
+    if(target.classList.contains('decimalBtn')) {
+        console.log('decimal', target.value);
+        return;
+    }
+    if(target.classList.contains('clearBtn')) {
+        console.log('clear', target.value);
+        return;
+    }
+    if(target.classList.contains('deleteBtn')) {
+        console.log('delete', target.value);
+        return;
+    }
+    if(target.classList.contains('bracketBtn')) {
+        console.log('brackets', target.value);
+        return;
+    }
+    if(target.classList.contains('equalBtn')) {
+        console.log('equal-sign', target.value);
+        return;
+    }
+    inputDigit(target.value);
+    updateDisplay();
+ });
 
