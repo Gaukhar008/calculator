@@ -19,6 +19,13 @@ function updateDisplay() {
      }
  }
 
+ function inputDecimal(dot) {
+     const {displayValue} = calculator;
+     if(!displayValue.includes(dot)) {
+         calculator.displayValue += dot;
+     }
+}
+
 const add = function(first, second) {
     let total = 0;
     total = first + second;
@@ -73,7 +80,8 @@ buttons.addEventListener('click', (event) => {
         return;
     }
     if(target.classList.contains('decimalBtn')) {
-        console.log('decimal', target.value);
+        inputDecimal(target.value);
+        updateDisplay();
         return;
     }
     if(target.classList.contains('clearBtn')) {
