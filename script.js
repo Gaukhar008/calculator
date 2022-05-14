@@ -16,7 +16,7 @@ function updateDisplay() {
          calculator.displayValue = digit;
          calculator.waitingForSecondOperand = false;
      } else {
-        if(displayValue == 0) {
+        if(displayValue === '0') {
          calculator.displayValue = digit;
         } else {
          calculator.displayValue += digit;
@@ -27,6 +27,11 @@ function updateDisplay() {
 
  function inputDecimal(dot) {
      const {displayValue} = calculator;
+     if(calculator.waitingForSecondOperand === true) {
+         calculator.displayValue = '0.';
+         calculator.waitingForSecondOperand = false;
+         return
+     }
      if(!displayValue.includes(dot)) {
          calculator.displayValue += dot;
      }
