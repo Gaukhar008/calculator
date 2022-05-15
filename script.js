@@ -18,11 +18,10 @@ function updateDisplay() {
      } else {
         if(displayValue === '0') {
          calculator.displayValue = digit;
-        } else {
+        } else if(!(calculator.displayValue.length > 15)) {
          calculator.displayValue += digit;
         }
      }
-     console.log(calculator);
  }
 
  function inputDecimal(dot) {
@@ -44,7 +43,6 @@ function operationHandler(nextOperator) {
     
     if(operator && calculator.waitingForSecondOperand) {
         calculator.operator = nextOperator;
-        console.log(calculator);
         return;
     }
     if (firstOperand === null && !isNaN(inputValue)) {
@@ -52,13 +50,16 @@ function operationHandler(nextOperator) {
     } else if (operator) {
         const result = operate(operator, firstOperand, inputValue);
 
-        calculator.displayValue = String(result);
+        if(!result % 1 !== 0 && result.length > 15) {
+            
+        }
+        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
         calculator.firstOperand = result;
+        console.log(result);
     }
 
     calculator.waitingForSecondOperand = true;
     calculator.operator = nextOperator;
-    console.log(calculator);
 }
 
 const add = function(first, second) {
@@ -108,7 +109,6 @@ function resetCalculator() {
     calculator.firstOperand = null;
     calculator.waitingForSecondOperand = false;
     calculator.operator = null;
-    console.log(calculator);
 }
 
 const buttons = document.querySelector('.buttons');

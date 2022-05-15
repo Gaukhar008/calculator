@@ -36,11 +36,12 @@ body {
     display: flex;
     justify-content:flex-end;
     align-items: flex-end;
-    width: 330px;
-    height: 70px;
+    text-align: right;
+    width: 92.5%;
+    height: 95%;
     font-size: 40px;
-    background-color: inherit;
-    border: none;   
+    border: none;  
+    color: rgba(23, 22, 22, 0.86); 
 }
 
 .buttons {
@@ -63,11 +64,50 @@ border-radius: 10px;
 border-color:white;
 }
 
+button:hover {
+    background-color: rgba(167, 171, 194, 0.823);
+    border-color: rgb(189, 194, 219);
+    transition: all 0.2s;
+  }
+
+.clearBtn {
+    background-color: rgb(232,0,13);
+    border-color: rgb(255, 3, 15);
+}
+
+.clearBtn:hover {
+    background-color: rgb(188, 26, 26);
+    border-color: rgb(222, 33, 33);
+    transition: all 0.2s;   
+}
+
+.deleteBtn {
+    background-color: rgb(0,191,255);
+    border-color: rgb(47, 203, 255);
+}
+
+.deleteBtn:hover {
+    background-color: rgb(65,105,225);
+    border-color: rgb(77, 120, 251);
+    transition: all 0.2s;  
+}
+
+.operationBtn {
+    background-color: rgb(220,208,255);
+    border-color: rgb(255, 225, 255);
+}
+
+.operationBtn:hover {
+    background-color: rgb(147,112,219);
+    border-color: rgb(164, 125, 241);
+    transition: all 0.2s;  
+}
+
 .footer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 80px;
+    align-items: flex-start;
+    min-height: 50px;
     width: 100%;
     margin-top: auto;
     font-size: 25px;
@@ -83,4 +123,10 @@ border-color:white;
 a {
     text-decoration: none;
     color: inherit;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
