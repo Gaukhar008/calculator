@@ -115,37 +115,31 @@ const buttons = document.querySelector('.buttons');
 
 buttons.addEventListener('click', (event) => {
     const {target} = event;
+    const {value} = target;
+
     if(!target.matches('button')) {
         return;
     }
-    if(target.classList.contains('operationBtn')) {
-        operationHandler(target.value);
-        updateDisplay();
-        return;
+
+    switch (value) {
+        case '+':
+        case '-':
+        case '×':
+        case '÷':
+        case '=':
+            operationHandler(value);
+            break;
+        case '.':
+            inputDecimal(value);
+            break;
+        case 'C':
+            resetCalculator();
+            break;
+        default: 
+            if(Number.isInteger(parseFloat(value))) {
+                inputDigit(value);
+            }
     }
-    if(target.classList.contains('decimalBtn')) {
-        inputDecimal(target.value);
-        updateDisplay();
-        return;
-    }
-    if(target.classList.contains('clearBtn')) {
-        resetCalculator();
-        updateDisplay();
-        return;
-    }
-    if(target.classList.contains('deleteBtn')) {
-        console.log('delete', target.value);
-        return;
-    }
-    if(target.classList.contains('bracketBtn')) {
-        console.log('brackets', target.value);
-        return;
-    }
-    if(target.classList.contains('equalBtn')) {
-        console.log('equal-sign', target.value);
-        return;
-    }
-    inputDigit(target.value);
     updateDisplay();
  });
 
