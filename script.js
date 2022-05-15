@@ -111,6 +111,12 @@ function resetCalculator() {
     calculator.operator = null;
 }
 
+function deleteLast() {
+    const {displayValue} = calculator;
+    const newValue = displayValue.toString().split('').slice(0, -1).join('');
+    calculator.displayValue = newValue;
+}
+
 const buttons = document.querySelector('.buttons');
 
 buttons.addEventListener('click', (event) => {
@@ -135,6 +141,8 @@ buttons.addEventListener('click', (event) => {
         case 'C':
             resetCalculator();
             break;
+        case '→':
+            deleteLast();
         default: 
             if(Number.isInteger(parseFloat(value))) {
                 inputDigit(value);
