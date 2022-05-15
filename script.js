@@ -55,7 +55,6 @@ function operationHandler(nextOperator) {
         }
         calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
         calculator.firstOperand = result;
-        console.log(result);
     }
 
     calculator.waitingForSecondOperand = true;
@@ -117,6 +116,12 @@ function deleteLast() {
     calculator.displayValue = newValue;
 }
 
+function toPercentage() {
+    const {displayValue} = calculator;
+    const newValue = displayValue / 100;
+    calculator.displayValue = `${parseFloat(newValue.toFixed(7))}`;
+}
+
 const buttons = document.querySelector('.buttons');
 
 buttons.addEventListener('click', (event) => {
@@ -143,6 +148,10 @@ buttons.addEventListener('click', (event) => {
             break;
         case '→':
             deleteLast();
+            break;
+        case '%':
+            toPercentage();
+            break;
         default: 
             if(Number.isInteger(parseFloat(value))) {
                 inputDigit(value);
