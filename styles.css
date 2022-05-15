@@ -34,14 +34,14 @@ body {
 
 .display-2 {
     display: flex;
-    justify-content:flex-end;
+    justify-self: unset;
     align-items: flex-end;
     text-align: right;
     width: 92.5%;
     height: 95%;
-    font-size: 40px;
+    font-size: 33px;
     border: none;  
-    color: rgba(23, 22, 22, 0.86); 
+    color: rgba(23, 22, 22, 0.86);
 }
 
 .buttons {
@@ -111,7 +111,7 @@ button:hover {
     width: 100%;
     margin-top: auto;
     font-size: 25px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .footer a:hover {
@@ -119,14 +119,10 @@ button:hover {
     text-decoration-color: white;
 }
 
-
 a {
     text-decoration: none;
     color: inherit;
 }
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input {
+    all: inherit;
 }
