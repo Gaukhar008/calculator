@@ -122,6 +122,12 @@ function toPercentage() {
     calculator.displayValue = `${parseFloat(newValue.toFixed(7))}`;
 }
 
+function changePlusMinusSign() {
+    const {displayValue} = calculator;
+        const newValue = displayValue * -1;
+        calculator.displayValue = newValue;
+}
+
 const buttons = document.querySelector('.buttons');
 
 buttons.addEventListener('click', (event) => {
@@ -152,6 +158,8 @@ buttons.addEventListener('click', (event) => {
         case '%':
             toPercentage();
             break;
+        case '-/+':
+            changePlusMinusSign();
         default: 
             if(Number.isInteger(parseFloat(value))) {
                 inputDigit(value);
