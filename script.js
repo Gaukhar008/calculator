@@ -160,6 +160,7 @@ buttons.addEventListener('click', (event) => {
             break;
         case '-/+':
             changePlusMinusSign();
+            break;
         default: 
             if(Number.isInteger(parseFloat(value))) {
                 inputDigit(value);
